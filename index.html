@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Sourav Kumar Roy — Staff Data Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --white:#ffffff;
+  --page:#f6f3ec;
+  --surface:#fffefb;
+  --ink:#181511;
+  --ink2:#3c362c;
+  --ink3:#6b6253;
+  --ink4:#8d8470;
+  --rule:#e3dccb;
+  --rule2:#d2c9b2;
+  --accent:#181511;
+  --accent-deep:#000000;
+  --accent-bg:#ece8de;
+  --accent-border:#c9c2b0;
+  --ink-on-accent:#fff8f0;
+  --link:#1d4ed8;
+  --link-hover:#1e3a8a;
+  --r:7px;
+  --sans:'Source Sans 3',system-ui,sans-serif;
+  --display:'Fraunces',Georgia,serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--page);color:var(--ink2);font-family:var(--sans);font-size:15.5px;line-height:1.65}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(246,243,236,0.88);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--rule);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 3rem;height:56px;
+}
+.nav-name{font-family:var(--display);font-size:16px;font-weight:600;color:var(--ink);letter-spacing:-0.01em}
+.nav-right{display:flex;align-items:center;gap:1.75rem}
+.nav-link{font-size:13px;color:var(--ink3);text-decoration:none;transition:color .15s;font-weight:500}
+.nav-link:hover{color:var(--accent)}
+.nav-dl{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent);color:var(--ink-on-accent);
+  padding:7px 16px;border-radius:var(--r);
+  font-size:13px;font-weight:600;
+  text-decoration:none;transition:background .15s;
+}
+.nav-dl:hover{background:var(--accent-deep)}
+.nav-dl svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* ── LAYOUT ── */
+.layout{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  min-height:100vh;
+  padding-top:56px;
+}
+
+/* ── SIDEBAR ── */
+.sidebar{
+  border-right:1px solid var(--rule);
+  padding:3rem 2.25rem;
+  position:sticky;top:56px;
+  height:calc(100vh - 56px);
+  overflow-y:auto;
+  background:var(--surface);
+}
+.avatar{
+  width:76px;height:76px;border-radius:50%;
+  background:var(--accent-bg);
+  border:3px solid var(--surface);
+  box-shadow:0 0 0 1.5px var(--accent-border), 0 4px 14px rgba(168,72,15,0.14);
+  display:block;
+  margin-bottom:1.4rem;
+  overflow:hidden;
+}
+.avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.sb-name{font-family:var(--display);font-size:1.3rem;font-weight:600;color:var(--ink);line-height:1.2;letter-spacing:-0.01em}
+.sb-title{font-size:12.5px;color:var(--accent);font-weight:600;margin-top:5px;letter-spacing:0.02em}
+.sb-loc{font-size:12.5px;color:var(--ink4);margin-top:4px}
+.sb-divider{border:none;border-top:1px solid var(--rule);margin:1.4rem 0}
+.sb-section-label{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:0.7rem;font-family:var(--mono)}
+.sb-contact-item{
+  display:flex;align-items:center;gap:8px;
+  font-size:13px;color:var(--link);
+  text-decoration:underline;text-decoration-color:var(--accent-border);text-underline-offset:2px;
+  margin-bottom:0.55rem;
+  transition:color .15s,text-decoration-color .15s;
+}
+.sb-contact-item:hover{color:var(--link-hover);text-decoration-color:var(--link-hover)}
+.sb-contact-item svg{width:15px;height:15px;stroke:var(--ink);flex-shrink:0;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.sb-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:0.4rem}
+.sb-tag{
+  font-size:11px;color:var(--ink2);
+  background:var(--page);
+  border:1px solid var(--rule);
+  border-radius:4px;padding:3px 9px;
+  font-family:var(--mono);font-weight:500;
+}
+.sb-cert{
+  font-size:12.5px;color:var(--ink2);
+  padding:8px 11px;
+  background:var(--accent-bg);
+  border:1px solid var(--accent-border);
+  border-radius:var(--r);
+  line-height:1.5;margin-top:0.4rem;
+  font-weight:500;
+}
+.edu-item{margin-top:0.4rem}
+.edu-deg{font-size:13px;font-weight:600;color:var(--ink)}
+.edu-school{font-size:12.5px;color:var(--ink3)}
+.edu-year{font-size:11.5px;color:var(--ink4);margin-top:1px;font-family:var(--mono)}
+
+/* ── MAIN ── */
+.main{padding:3rem 4rem 4rem;max-width:980px}
+
+/* ── HERO BLOCK ── */
+.hero-block{padding-bottom:2.75rem;border-bottom:1px solid var(--rule)}
+.hero-eyebrow{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.9rem;font-family:var(--mono)}
+.hero-h1{font-family:var(--display);font-size:3rem;font-weight:600;line-height:1.05;letter-spacing:-0.02em;color:var(--ink);margin-bottom:1.1rem}
+.hero-h1 em{font-style:italic;font-weight:400;color:var(--accent)}
+.hero-lead{font-size:16px;color:var(--ink2);line-height:1.8;max-width:680px;margin-bottom:1.5rem}
+
+/* impact annotation — the signature element: log-style metric tags */
+.num{
+  display:inline-block;
+  font-family:var(--mono);
+  font-size:13px;font-weight:600;
+  color:var(--accent-deep);
+  background:var(--accent-bg);
+  border:1px solid var(--accent-border);
+  border-radius:4px;
+  padding:1px 7px;
+  margin:0 1px;
+  white-space:nowrap;
+  vertical-align:baseline;
+  line-height:1.6;
+}
+
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1px;
+  border:1px solid var(--rule);
+  border-radius:var(--r);
+  overflow:hidden;
+  margin-top:2rem;
+  background:var(--rule);
+}
+.hs-cell{
+  background:var(--surface);
+  padding:1.1rem 1.2rem;
+}
+.hs-n{font-family:var(--mono);font-size:1.55rem;font-weight:600;color:var(--ink);letter-spacing:-0.01em;line-height:1}
+.hs-l{font-size:11px;color:var(--ink4);margin-top:5px;line-height:1.4}
+
+/* ── SECTIONS ── */
+.section{padding:2.5rem 0;border-bottom:1px solid var(--rule)}
+.section:last-child{border-bottom:none}
+.sec-label{font-size:10.5px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink);margin-bottom:1.4rem;font-family:var(--mono)}
+.sec-h2{font-family:var(--display);font-size:1.3rem;font-weight:600;letter-spacing:-0.01em;color:var(--ink);margin-bottom:1.5rem}
+
+/* ── EXPERIENCE ── */
+.exp-item{margin-bottom:1.9rem}
+.exp-item:last-child{margin-bottom:0}
+.exp-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:4px;margin-bottom:3px}
+.exp-role{font-family:var(--display);font-size:1.1rem;font-weight:600;color:var(--ink);letter-spacing:-0.005em}
+.exp-period{font-size:11.5px;color:var(--ink4);white-space:nowrap;font-family:var(--mono)}
+.exp-company{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:0.7rem}
+.exp-company a{color:var(--link);text-decoration:underline;text-decoration-color:var(--accent-border);text-underline-offset:2px;transition:color .15s,text-decoration-color .15s}
+.exp-company a:hover{color:var(--link-hover);text-decoration-color:var(--link-hover)}
+.exp-bullets{list-style:none;padding:0}
+.exp-bullets li{
+  font-size:14px;color:var(--ink2);
+  line-height:1.75;
+  padding-left:16px;
+  position:relative;
+  margin-bottom:5px;
+}
+.exp-bullets li::before{
+  content:'';
+  position:absolute;left:0;top:11px;
+  width:6px;height:1.5px;
+  background:var(--accent);
+  opacity:0.5;
+}
+
+/* ── SKILLS ── */
+.skills-table{width:100%;border-collapse:collapse}
+.skills-table tr{border-bottom:1px solid var(--rule)}
+.skills-table tr:last-child{border-bottom:none}
+.skills-table td{padding:12px 0;vertical-align:top}
+.sk-cat{
+  font-size:11.5px;font-weight:700;color:var(--ink3);
+  width:160px;padding-right:1.5rem;
+  padding-top:14px;
+  white-space:nowrap;
+  font-family:var(--mono);
+}
+.sk-pills{display:flex;flex-wrap:wrap;gap:6px;padding-top:3px}
+.sk-pill{
+  font-size:12px;color:var(--ink2);
+  background:var(--page);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:4px 10px;
+  font-family:var(--mono);
+}
+.sk-pill.hl{
+  color:var(--accent-deep);
+  background:var(--accent-bg);
+  border-color:var(--accent-border);
+  font-weight:500;
+}
+
+/* ── PROJECTS ── */
+.proj-item{
+  border:1px solid var(--rule);
+  background:var(--surface);
+  border-radius:var(--r);
+  padding:1.4rem 1.6rem;
+  margin-bottom:14px;
+}
+.proj-item:last-child{margin-bottom:0}
+.proj-title{font-family:var(--display);font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:7px}
+.proj-desc{font-size:14px;color:var(--ink2);line-height:1.75}
+.proj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.proj-tag{font-size:11px;color:var(--ink3);background:var(--page);border:1px solid var(--rule);border-radius:3px;padding:3px 8px;font-family:var(--mono)}
+
+/* ── OSS ── */
+.oss-row{
+  display:flex;align-items:flex-start;gap:1.2rem;
+  padding:1.1rem 1.3rem;
+  background:var(--surface);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  border-radius:var(--r);
+  margin-bottom:10px;
+}
+.oss-row:last-child{margin-bottom:0}
+.oss-repo{font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap;min-width:170px;font-family:var(--mono)}
+.oss-repo a{color:var(--link);text-decoration:underline;text-underline-offset:2px;font-size:11.5px;display:block;margin-top:3px;font-family:var(--sans);font-weight:500}
+.oss-repo a:hover{color:var(--link-hover)}
+.oss-desc{font-size:13.5px;color:var(--ink3);line-height:1.7}
+
+/* ── FOOTER ── */
+footer{
+  text-align:center;padding:1.75rem 2rem;
+  border-top:1px solid var(--rule);
+  font-size:12px;color:var(--ink4);
+  background:var(--surface);
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:780px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--rule);padding:1.75rem}
+  .main{padding:1.75rem}
+  .hero-h1{font-size:2.2rem}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  nav{padding:0 1.25rem}
+  .nav-link{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:10px">
+    <img src="./assets/profile.jpg" alt="" style="width:30px;height:30px;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1.5px var(--accent-border)"/>
+    <span class="nav-name">Sourav Kumar Roy</span>
+  </div>
+  <div class="nav-right">
+    <a class="nav-link" href="#about">About</a>
+    <a class="nav-link" href="#experience">Shipped</a>
+    <a class="nav-link" href="#skills">Skills</a>
+    <a class="nav-link" href="#strengths">Strengths</a>
+    <a class="nav-link" href="#oss">Open Source</a>
+    <a class="nav-link" href="#say-hi">Say Hi</a>
+    <a class="nav-dl" href="Sourav_Roy_Resume.pdf" download>
+      <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Resume
+    </a>
+  </div>
+</nav>
+
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="avatar"><img src="./assets/profile.jpg" alt="Sourav Kumar Roy"/></div>
+    <div class="sb-name">Sourav Kumar Roy</div>
+    <div class="sb-title">Staff Data Engineer</div>
+    <div class="sb-loc">Hyderabad, India</div>
+
+    <hr class="sb-divider"/>
+
+    <div class="sb-section-label">Contact</div>
+    <a class="sb-contact-item" href="mailto:tosourav6@gmail.com">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      tosourav6@gmail.com
+    </a>
+    <a class="sb-contact-item" href="tel:+918306097049">
+      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.08 3.4 2 2 0 0 1 3.05 1.24h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      +91 83060 97049
+    </a>
+    <a class="sb-contact-item" href="https://www.linkedin.com/in/souravroy6/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      linkedin.com/in/souravroy6
+    </a>
+    <a class="sb-contact-item" href="https://github.com/souravroy0708" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+      github.com/souravroy0708
+    </a>
+
+    <hr class="sb-divider"/>
+
+    <div class="sb-section-label">Core Strengths</div>
+    <div class="sb-tags">
+      <span class="sb-tag">PySpark</span>
+      <span class="sb-tag">AWS</span>
+      <span class="sb-tag">Databricks</span>
+      <span class="sb-tag">Kafka</span>
+      <span class="sb-tag">Airflow</span>
+      <span class="sb-tag">BigQuery</span>
+      <span class="sb-tag">Delta Lake</span>
+      <span class="sb-tag">dbt</span>
+      <span class="sb-tag">Python</span>
+      <span class="sb-tag">SQL</span>
+    </div>
+
+    <hr class="sb-divider"/>
+
+    <div class="sb-section-label">Certification</div>
+    <div class="sb-cert">AWS Certified Solutions Architect </div>
+
+    <hr class="sb-divider"/>
+
+    <div class="sb-section-label">Education</div>
+    <div class="edu-item">
+      <div class="edu-deg">B.Tech in Information Technology</div>
+      <div class="edu-school">Anna University</div>
+      <div class="edu-year">2012</div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- HERO -->
+    <div class="hero-block">
+      <div class="hero-eyebrow">Staff Data Engineer · 10+ years</div>
+      <h1 class="hero-h1">Hi, I am Sourav<br><em>I build data platforms that scale</em></h1>
+      <p class="hero-lead">
+        I design systems that move data at scale, pipelines that do not miss SLAs, workflows
+        that do not lose records, and platforms that hold up under real production load.
+      </p>
+      <p class="hero-lead">
+        Currently, I work at <strong>Cigna (Evernorth)</strong> on healthcare data platforms.
+        Previously, I built the data layer for a high-volume insurance pipelines at <strong>Aon</strong>.
+      </p>
+
+      <div class="hero-stats">
+        <div class="hs-cell">
+          <div class="hs-n">10+</div>
+          <div class="hs-l">years in data<br>engineering</div>
+        </div>
+        <div class="hs-cell">
+          <div class="hs-n">500M+</div>
+          <div class="hs-l">records processed<br>daily</div>
+        </div>
+        <div class="hs-cell">
+          <div class="hs-n">4h→30m</div>
+          <div class="hs-l">pipeline runtime<br>reduction</div>
+        </div>
+        <div class="hs-cell">
+          <div class="hs-n">98%</div>
+          <div class="hs-l">pipeline reliability<br>(from 70%)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABOUT / NARRATIVE -->
+    <div class="section" id="about">
+      <div class="sec-label">🧠 What I Work With</div>
+
+      <p style="font-size:13px;color:var(--ink2);font-weight:600;margin-bottom:0.5rem">Data Engineering &amp; Processing</p>
+      <div class="sb-tags" style="margin-bottom:1.25rem">
+        <span class="sb-tag">Pipeline Orchestration</span><span class="sb-tag">Batch ETL at Scale</span><span class="sb-tag">Stream Processing</span><span class="sb-tag">Event-Driven Architecture</span>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink2);font-weight:600;margin-bottom:0.5rem">Platform &amp; Infrastructure</p>
+      <div class="sb-tags" style="margin-bottom:1.25rem">
+        <span class="sb-tag">Lakehouse Architecture</span><span class="sb-tag">Multi-Cloud Deployments</span><span class="sb-tag">Infrastructure as Code</span><span class="sb-tag">Data Governance</span>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink2);font-weight:600;margin-bottom:0.5rem">Reliability &amp; Automation</p>
+      <div class="sb-tags" style="margin-bottom:1.25rem">
+        <span class="sb-tag">Failure Recovery</span><span class="sb-tag">SLA Monitoring</span><span class="sb-tag">Compute Cost Optimisation</span><span class="sb-tag">CI/CD Automation</span>
+      </div>
+
+      <p style="font-size:13px;color:var(--ink2);font-weight:600;margin-bottom:0.5rem">Tools &amp; Technologies</p>
+      <div class="sb-tags">
+        <span class="sb-tag">PySpark</span><span class="sb-tag">Airflow</span><span class="sb-tag">Kafka</span><span class="sb-tag">Databricks</span><span class="sb-tag">Delta Lake</span><span class="sb-tag">dbt</span><span class="sb-tag">Terraform</span><span class="sb-tag">Kubernetes</span><span class="sb-tag">Python</span><span class="sb-tag">SQL</span><span class="sb-tag">Scala</span><span class="sb-tag">AWS</span><span class="sb-tag">GCP</span>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+      <div class="sec-label">Things I have Shipped</div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-role">Staff Data Engineer</span>
+          <span class="exp-period">Feb 2026 – Present</span>
+        </div>
+        <div class="exp-company"><a href="https://www.cigna.com" target="_blank" rel="noopener">Cigna</a> (Evernorth) · Hyderabad</div>
+        <ul class="exp-bullets">
+          <li>Designing scalable PySpark pipelines on AWS and Databricks processing healthcare datasets for analytics and operational reporting across the Cigna enterprise.</li>
+          <li>Partnering with platform teams to improve ETL workflow reliability, data freshness SLAs, and cloud-based data infrastructure performance.</li>
+          <li>Building data solutions supporting claims processing, member analytics, and regulatory reporting in a HIPAA-compliant environment.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-role">Staff Data Engineer</span>
+          <span class="exp-period">Sep 2021 – Jan 2026</span>
+        </div>
+        <div class="exp-company"><a href="https://www.cigna.com" target="_blank" rel="noopener">Cigna</a> · via Capgemini · Bangalore</div>
+        <ul class="exp-bullets">
+          <li>Architected a cloud-native data platform on AWS (S3, EMR, Glue, Athena, Databricks) serving <span class="num">100+</span> users across Finance, Risk, and Analytics with unified data models and governed access.</li>
+          <li>Built PySpark pipelines on EMR and Databricks processing <span class="num">500M+</span> portfolio records — powering fraud detection, risk analytics, and ML feature engineering in a regulated financial environment.</li>
+          <li>Modernised 10+ legacy ETL workflows: reduced runtime from <span class="num">4 hours → 30 min</span> and improved reliability from <span class="num">70% → 98%</span> through enhanced checkpointing and retry logic.</li>
+          <li>Migrated <span class="num">500M+</span> datasets into S3/EMR with validation frameworks, lineage tracking, and SLA monitoring — cutting data incidents by <span class="num">60%</span>.</li>
+          <li>Reduced EMR and Databricks compute cost by <span class="num">30%</span> via autoscaling policies, spot instances, file-size tuning, and Spark shuffle optimisation.</li>
+          <li>Built reusable ingestion and quality frameworks adopted across teams, reducing onboarding time by <span class="num">40%</span>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-role">Senior Data Engineer</span>
+          <span class="exp-period">Jan 2020 – Sep 2021</span>
+        </div>
+        <div class="exp-company"><a href="https://www.aon.com" target="_blank" rel="noopener">Aon</a> · Bangalore</div>
+        <ul class="exp-bullets">
+          <li>Built batch and real-time pipelines on GCP using Dataflow (Apache Beam), Pub/Sub, and BigQuery processing <span class="num">5M+</span> daily insurance events, improving underwriting analytics by <span class="num">2–3×</span>.</li>
+          <li>Designed BigQuery warehouse models with partitioning, clustering, and Materialised Views — improving query latency by <span class="num">50–70%</span> and reducing compute costs by <span class="num">25%</span>.</li>
+          <li>Implemented Cloud Composer (Airflow) orchestration with retries, alerting, and SLA thresholds, reducing pipeline failures by <span class="num">40%</span>.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-role">Data Engineer</span>
+          <span class="exp-period">Jun 2018 – Aug 2019</span>
+        </div>
+        <div class="exp-company"><a href="https://www.mahindracomviva.com" target="_blank" rel="noopener">Mahindra Comviva</a> · Bangalore</div>
+        <ul class="exp-bullets">
+          <li>Built high-volume ETL pipelines using Spark, Hive, Kafka, and HDFS processing <span class="num">10M+</span> telecom CDRs/day for fraud detection, billing, and customer analytics.</li>
+          <li>Optimised Spark and Hive jobs by <span class="num">25%</span> through shuffle optimisation, file sizing, and execution plan tuning.</li>
+        </ul>
+      </div>
+
+      <div class="exp-item">
+        <div class="exp-top">
+          <span class="exp-role">Software Engineer – Data Systems</span>
+          <span class="exp-period">May 2014 – Jan 2018</span>
+        </div>
+        <div class="exp-company">Product Startups (Cassius / <a href="https://www.recosenselabs.com" target="_blank" rel="noopener">Recosense</a>) · Bangalore</div>
+        <ul class="exp-bullets">
+          <li>Built <strong>scalable backend services</strong> and <strong>data ingestion pipelines</strong> supporting analytics and recommendation platforms, with a focus on <strong>system reliability</strong> and <strong>production observability</strong>.</li>
+          <li>Designed and implemented data processing systems emphasising <strong>scalable architecture</strong>, <strong>fault tolerance</strong>, and <strong>operational monitoring</strong> in fast-paced startup environments.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+      <div class="sec-label">Technical Skills</div>
+      <table class="skills-table">
+        <tr>
+          <td class="sk-cat">Cloud &amp; Platforms</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill hl">AWS S3</span><span class="sk-pill hl">EMR</span><span class="sk-pill hl">Glue</span><span class="sk-pill hl">Athena</span><span class="sk-pill hl">Kinesis</span><span class="sk-pill hl">Redshift</span><span class="sk-pill hl">Databricks</span><span class="sk-pill">GCP BigQuery</span><span class="sk-pill">Dataflow</span><span class="sk-pill">Pub/Sub</span><span class="sk-pill">Delta Lake</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="sk-cat">Big Data &amp; Streaming</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill hl">PySpark</span><span class="sk-pill hl">Structured Streaming</span><span class="sk-pill hl">Apache Kafka</span><span class="sk-pill">Apache Flink</span><span class="sk-pill">Apache Beam</span><span class="sk-pill">Scala Spark</span><span class="sk-pill">Hive</span><span class="sk-pill">HDFS</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="sk-cat">Languages</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill hl">Python</span><span class="sk-pill hl">SQL</span><span class="sk-pill">Scala</span><span class="sk-pill">Bash</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="sk-cat">Orchestration</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill hl">Apache Airflow</span><span class="sk-pill hl">dbt</span><span class="sk-pill">Terraform</span><span class="sk-pill">Kubernetes</span><span class="sk-pill">Docker</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="sk-cat">Databases</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill">PostgreSQL</span><span class="sk-pill">MySQL</span><span class="sk-pill">DynamoDB</span><span class="sk-pill">Redis</span><span class="sk-pill">HBase</span>
+          </div></td>
+        </tr>
+        <tr>
+          <td class="sk-cat">Data Engineering</td>
+          <td><div class="sk-pills">
+            <span class="sk-pill">ETL / ELT</span><span class="sk-pill">Data Modeling</span><span class="sk-pill">CDC</span><span class="sk-pill">Lakehouse</span><span class="sk-pill">Data Warehousing</span><span class="sk-pill">Lineage &amp; Governance</span>
+          </div></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <div class="sec-label">Projects</div>
+
+      <div class="proj-item">
+        <div class="proj-title">Real-Time Fraud Detection &amp; Risk Analytics Platform</div>
+        <div class="proj-desc">
+          Distributed streaming platform supporting fraud detection and ML workflows for high-volume transactions.
+          Built with event-time processing, late-data handling, and fault-tolerant architecture.
+          Enabled fraud and risk teams to consume <span class="num">ML-ready</span> datasets with governed access and automated quality enforcement under strict SLA requirements.
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">PySpark Structured Streaming</span><span class="proj-tag">Kafka</span><span class="proj-tag">AWS EMR</span><span class="proj-tag">Delta Lake</span><span class="proj-tag">Python</span>
+        </div>
+      </div>
+
+      <div class="proj-item">
+        <div class="proj-title">Cloud Lakehouse &amp; ML Feature Engineering Platform</div>
+        <div class="proj-desc">
+          Led implementation of an AWS lakehouse consolidating multiple enterprise data sources using S3, Glue, and Databricks for unified analytics and ML feature engineering.
+          Established data modeling, schema evolution, and governance standards supporting concurrent analytics, BI, and ML workloads across organisational teams.
+        </div>
+        <div class="proj-tags">
+          <span class="proj-tag">Databricks</span><span class="proj-tag">AWS Glue</span><span class="proj-tag">Delta Lake</span><span class="proj-tag">dbt</span><span class="proj-tag">SageMaker</span><span class="proj-tag">S3</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHERE I'M STRONGEST -->
+    <div class="section" id="strengths">
+      <div class="sec-label">Where I am Strongest</div>
+      <div class="proj-item" style="margin-bottom:10px">
+        <div class="proj-title">Spark &amp; pipeline optimisation</div>
+        <div class="proj-desc">Rewriting slow, resource-heavy ETL workloads — cutting runtime from hours to minutes and reducing compute spend through shuffle tuning, file sizing, and execution plan changes.</div>
+      </div>
+      <div class="proj-item" style="margin-bottom:10px">
+        <div class="proj-title">Lakehouse &amp; data platform architecture</div>
+        <div class="proj-desc">Designing governed, multi-team data platforms on S3/EMR/Glue/Athena and Databricks that serve finance, risk, and analytics users from a single source of truth.</div>
+      </div>
+      <div class="proj-item" style="margin-bottom:0">
+        <div class="proj-title">Orchestration that survives real-world failures</div>
+        <div class="proj-desc">Building Airflow and Cloud Composer DAGs with retries, alerting, and SLA thresholds — designed assuming things will break, not hoping they won't.</div>
+      </div>
+      <p class="proj-desc" style="margin-top:1.25rem">Debugging is something I've gotten good at out of necessity. When a pipeline breaks in production, I'm usually the one tracing it back to the source.</p>
+    </div>
+
+    <!-- OPEN SOURCE -->
+    <div class="section" id="oss">
+      <div class="sec-label">Open Source — Getting Involved</div>
+
+      <div class="oss-row">
+        <div class="oss-repo">
+          apache/airflow
+          <!-- <a href="https://github.com/apache/airflow/contribute" target="_blank" rel="noopener">good first issues ↗</a> -->
+        </div>
+        <div class="oss-desc">
+          Actively working toward contributions on provider bug fixes, REST API improvements, and documentation
+          in Apache Airflow — the industry-standard workflow orchestration tool used by Airbnb, Lyft, Twitter, and Robinhood.
+        </div>
+      </div>
+
+      <div class="oss-row">
+        <div class="oss-repo">
+          apache/iceberg-python
+          <!-- <a href="https://github.com/apache/iceberg-python" target="_blank" rel="noopener">github ↗</a> -->
+        </div>
+        <div class="oss-desc">
+          Working toward contributions to PyIceberg — the Python implementation of Apache Iceberg's
+          table format, used for lakehouse table management at companies running large-scale analytics on S3/EMR.
+        </div>
+      </div>
+
+      <div class="oss-row">
+        <div class="oss-repo">
+          dbt-labs/dbt-core
+          <!-- <a href="https://github.com/dbt-labs/dbt-core" target="_blank" rel="noopener">github ↗</a> -->
+        </div>
+        <div class="oss-desc">
+          Exploring contribution opportunities in adapter packages and documentation for dbt-core,
+          widely adopted across modern data stacks at Airbnb, GitLab, and Shopify.
+        </div>
+      </div>
+
+      <div class="oss-row">
+        <div class="oss-repo">
+          delta-io/delta
+          <!-- <a href="https://github.com/delta-io/delta/contribute" target="_blank" rel="noopener">good first issues ↗</a> -->
+        </div>
+        <div class="oss-desc">
+          Looking into Delta Lake's connector and storage-layer issues, given hands-on production experience
+          running Delta Lake on Databricks and EMR for lakehouse workloads.
+        </div>
+      </div>
+    </div>
+
+    <!-- SAY HI -->
+    <div class="section" id="say-hi" style="border-bottom:none">
+      <div class="sec-label">📫 Say Hi</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://www.linkedin.com/in/souravroy6/" target="_blank" rel="noopener" class="nav-dl">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/souravroy0708/souravroy0708.github.io" target="_blank" rel="noopener" class="nav-dl" style="background:var(--ink);color:var(--surface)">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+          GitHub
+        </a>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  Say hi — Sourav Kumar Roy · Lead Data Engineer · Hyderabad, India ·
+  <a href="mailto:tosourav6@gmail.com" style="color:var(--link);text-decoration:underline">tosourav6@gmail.com</a>
+</footer>
+
+</body>
+</html>
